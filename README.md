@@ -1,6 +1,45 @@
-this is my remake of my beloved game from childhood moomoo.io
-as it is now as good as deserted, I deceded, with the help of the current technology, I can remake the game as I always wanted it!
+# MuMoo.io
 
-## the current progress:
-- added the general structure of the game
-- added the first file "index.html
+This is my remake of my beloved childhood game, MooMoo.io. Since the original is now mostly deserted, I decided to remake the game from scratch with modern web technology.
+
+## Current Progress
+
+- Added the general project structure.
+- Added a Vite + TypeScript client.
+- Added PixiJS for future rendering work.
+- Added a Node.js + TypeScript WebSocket server.
+- Added shared configuration for client and server.
+
+## Setup
+
+Install dependencies from the repository root:
+
+```sh
+npm install
+```
+
+Run both the client and server:
+
+```sh
+npm run dev
+```
+
+Run them separately:
+
+```sh
+npm run dev:client
+npm run dev:server
+```
+
+Default local URLs:
+
+- Client: http://127.0.0.1:5173
+- Server: http://127.0.0.1:3001
+- WebSocket: ws://127.0.0.1:3001/ws
+
+## Project Layout
+
+- `client/` - Vite, TypeScript, and PixiJS browser client.
+- `server/` - Node.js, TypeScript, and WebSocket server.
+- `shared/` - Shared constants and types used by both client and server.
+- `docs/` - Roadmap and architecture documentation.

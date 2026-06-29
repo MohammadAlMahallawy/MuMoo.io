@@ -1,0 +1,29 @@
+:root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #f7fff9;
+  background: #102018;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+canvas {
+  display: block;
+}
+
+.status {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  padding: 8px 10px;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  background: rgb(16 32 24 / 0.72);
+  border-radius: 6px;
+  font-size: 14px;
+}

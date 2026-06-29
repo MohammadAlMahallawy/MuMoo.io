@@ -168,16 +168,16 @@ These systems should interact through clear interfaces.
 * [x] Node.js installed
 * [x] npm installed
 ## Client Setup
-- [ ] Initialize Vite project
-- [ ] Configure TypeScript
-- [ ] Install PixiJS
-- [ ] Verify client runs
+- [x] Initialize Vite project
+- [x] Configure TypeScript
+- [x] Install PixiJS
+- [x] Verify client runs
 
 ## Server Setup
-- [ ] Initialize Node.js project
-- [ ] Configure TypeScript
-- [ ] Install WebSocket library
-- [ ] Verify server runs
+- [x] Initialize Node.js project
+- [x] Configure TypeScript
+- [x] Install WebSocket library
+- [x] Verify server runs
 
 ---
 
@@ -191,12 +191,12 @@ Run the project locally.
 
 Tasks:
 
-* [ ] Initialize Vite
-* [ ] Configure TypeScript
-* [ ] Install PixiJS
-* [ ] Install server dependencies
-* [ ] Verify build
-* [ ] Verify hot reload
+* [x] Initialize Vite
+* [x] Configure TypeScript
+* [x] Install PixiJS
+* [x] Install server dependencies
+* [x] Verify build
+* [x] Verify hot reload
 
 Definition of Done:
 

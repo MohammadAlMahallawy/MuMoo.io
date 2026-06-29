@@ -1,0 +1,19 @@
+{
+  "name": "@mumoo/client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mumoo/shared": "file:../shared",
+    "pixi.js": "^8.13.2"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
