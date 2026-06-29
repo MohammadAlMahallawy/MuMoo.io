@@ -247,11 +247,11 @@ World
 
 Tasks:
 
-* [ ] World grid
-* [ ] Trees
-* [ ] Rocks
-* [ ] Bushes
-* [ ] Random generation
+* [x] World grid
+* [x] Trees
+* [x] Rocks
+* [x] Bushes
+* [x] Random generation
 
 Definition of Done:
 

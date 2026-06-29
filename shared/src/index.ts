@@ -5,3 +5,7 @@ export const NETWORK_CONFIG = {
   defaultPort: 3001,
   websocketPath: "/ws"
 } as const;
+
+export * from "./constants";
+export * from "./world";
+
