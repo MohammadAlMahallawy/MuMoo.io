@@ -11,4 +11,7 @@ export interface WorldEntity {
   y: number;
   radius: number;
   scale: number;
+  health: number;
+  maxHealth: number;
 }
+

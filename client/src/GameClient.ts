@@ -11,6 +11,7 @@ import { FrameStats } from "./rendering/FrameStats";
 import { GameLoop } from "./rendering/GameLoop";
 import { PlayerView } from "./rendering/PlayerView";
 import { WorldView } from "./rendering/WorldView";
+import { InventoryView } from "./rendering/InventoryView";
 
 export class GameClient {
   private readonly world = new Container();
@@ -24,7 +25,9 @@ export class GameClient {
   private readonly worldView: WorldView;
   private readonly camera = new Camera(this.world);
   private readonly frameStats = new FrameStats();
+  private readonly inventoryView = new InventoryView(this.player);
   private readonly loop: GameLoop;
+
 
   private constructor(
     private readonly root: HTMLDivElement,
@@ -57,7 +60,7 @@ export class GameClient {
     this.world.addChild(this.background.container);
     this.world.addChild(this.worldView.container);
     this.world.addChild(this.playerView.container);
-    this.app.stage.addChild(this.world, this.frameStats.view);
+    this.app.stage.addChild(this.world, this.frameStats.view, this.inventoryView.view);
 
     this.resize();
     window.addEventListener("resize", this.resize);
@@ -67,7 +70,9 @@ export class GameClient {
     this.background.resize(this.app.screen.width, this.app.screen.height);
     this.camera.follow(this.player, this.app.screen.width, this.app.screen.height);
     this.frameStats.position(16, 16);
+    this.inventoryView.position(this.app.screen.width - 166, 16);
   };
+
 
   private update(deltaSeconds: number, deltaMs: number): void {
     this.playerController.update(
@@ -75,11 +80,15 @@ export class GameClient {
       this.mouseInput.getMousePosition(),
       this.app.screen.width,
       this.app.screen.height,
-      this.worldManager.entities
+      this.worldManager,
+      this.mouseInput.isMouseDown(),
+      this.keyboardInput.isSpacePressed()
     );
     this.playerView.sync();
+    this.inventoryView.update();
     this.camera.follow(this.player, this.app.screen.width, this.app.screen.height);
     this.frameStats.update(deltaMs);
   }
 }
+
 

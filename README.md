@@ -10,8 +10,11 @@ This is my remake of my beloved childhood game, MooMoo.io. Since the original is
 - Added a resize-aware PixiJS rendering window with a background, game loop, delta time, and FPS counter.
 - Added a local player entity with placeholder rendering, WASD movement, mouse-look rotation, and camera follow.
 - Added a randomly generated world containing trees, rocks, and bushes with collision resolution and border clamping.
+- Added resource gathering: left-click or Space attacks nearby resources, deals damage, and awards wood/stone/food on hit and destruction.
+- Added a player inventory HUD showing current wood, stone, and food counts.
 - Added a Node.js + TypeScript WebSocket server.
 - Added shared configuration for client and server.
+
 
 ## Setup
 

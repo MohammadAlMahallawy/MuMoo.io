@@ -265,17 +265,18 @@ Resources
 
 Tasks:
 
-* [ ] Hit detection
-* [ ] Tree health
-* [ ] Rock health
-* [ ] Resource drops
-* [ ] Inventory
+* [x] Hit detection
+* [x] Tree health
+* [x] Rock health
+* [x] Resource drops
+* [x] Inventory
 
 Definition of Done:
 
 Player gathers resources.
 
 ---
+
 
 # Milestone 6
 

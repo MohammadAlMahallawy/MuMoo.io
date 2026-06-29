@@ -3,14 +3,35 @@ import { WorldEntity, EntityType } from "@mumoo/shared";
 
 export class WorldView {
   readonly container = new Container();
+  private readonly entityVisuals = new Map<string, Container>();
 
   constructor(entities: WorldEntity[]) {
+    this.sync(entities);
+  }
+
+  sync(entities: WorldEntity[]): void {
+    const activeIds = new Set<string>();
+
     for (const entity of entities) {
-      const visual = this.renderEntity(entity);
-      visual.position.set(entity.x, entity.y);
-      this.container.addChild(visual);
+      activeIds.add(entity.id);
+
+      if (!this.entityVisuals.has(entity.id)) {
+        const visual = this.renderEntity(entity);
+        visual.position.set(entity.x, entity.y);
+        this.container.addChild(visual);
+        this.entityVisuals.set(entity.id, visual);
+      }
+    }
+
+    // Remove visuals for entities that are no longer active
+    for (const [id, visual] of this.entityVisuals.entries()) {
+      if (!activeIds.has(id)) {
+        this.container.removeChild(visual);
+        this.entityVisuals.delete(id);
+      }
     }
   }
+
 
   private renderEntity(entity: WorldEntity): Container {
     const container = new Container();

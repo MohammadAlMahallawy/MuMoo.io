@@ -46,11 +46,11 @@ export class KeyboardInput {
     };
   }
 
-  private readonly handleKeyDown = (event: KeyboardEvent): void => {
-    if (!MOVEMENT_KEYS.has(event.code)) {
-      return;
-    }
+  isSpacePressed(): boolean {
+    return this.pressedKeys.has("Space");
+  }
 
+  private readonly handleKeyDown = (event: KeyboardEvent): void => {
     this.pressedKeys.add(event.code);
   };
 
@@ -62,3 +62,4 @@ export class KeyboardInput {
     this.pressedKeys.clear();
   };
 }
+
