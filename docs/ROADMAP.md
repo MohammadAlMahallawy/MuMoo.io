@@ -210,12 +210,12 @@ Rendering Engine
 
 Tasks:
 
-* [ ] Create game window
-* [ ] Render background
-* [ ] Game loop
-* [ ] Delta time
-* [ ] FPS counter
-* [ ] Resize handling
+* [x] Create game window
+* [x] Render background
+* [x] Game loop
+* [x] Delta time
+* [x] FPS counter
+* [x] Resize handling
 
 Definition of Done:
 
@@ -229,11 +229,11 @@ Player
 
 Tasks:
 
-* [ ] Player entity
-* [ ] Sprite
-* [ ] WASD movement
-* [ ] Rotation
-* [ ] Camera follow
+* [x] Player entity
+* [x] Sprite
+* [x] WASD movement
+* [x] Rotation
+* [x] Camera follow
 
 Definition of Done:
 
