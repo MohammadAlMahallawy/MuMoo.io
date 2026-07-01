@@ -78,8 +78,8 @@ export class WorldView {
 
     for (const fruit of fruits) {
       g.circle(fruit.x, fruit.y, radius * 0.15)
-        .fill("#d13b3b")
-        .stroke({ width: 2, color: "#541212" });
+        .fill("#932b2b")
+        .stroke({ width: 2, color: "#431010" });
     }
 
     return g;
@@ -127,14 +127,15 @@ export class WorldView {
 
     // 4. Add Berries (small red circles with outline)
     const berries = [
-      { x: -radius * 0.4, y: -radius * 0.3 },
-      { x: radius * 0.35, y: radius * 0.15 },
-      { x: -radius * 0.1, y: radius * 0.45 },
+      { x: -radius * 0.43, y: -radius * 0.37 },
+      { x: radius * 0.37, y: radius * 0.37 },
+      { x: -radius * 0.3, y: radius * 0.3 },
+      { x: radius * 0.4, y: -radius * 0.4 },
     ];
 
     for (const berry of berries) {
-      g.circle(berry.x, berry.y, radius * 0.16)
-        .fill("#e02424")
+      g.circle(berry.x, berry.y, radius * 0.13)
+        .fill("#801c1c")
         .stroke({ width: 2, color: "#541212" });
     }
 

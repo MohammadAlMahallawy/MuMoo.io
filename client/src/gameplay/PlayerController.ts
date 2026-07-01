@@ -77,12 +77,12 @@ export class PlayerController {
 
     }
 
-    // 4. Resolve collisions with world entities (circle-to-circle collision pushing)
+    // 4. Resolve collisions with world entities (circle-to-circle collision pushing), player can be slightly inside another intity
     for (const entity of worldManager.entities) {
       const dx = this.player.x - entity.x;
       const dy = this.player.y - entity.y;
       const distance = Math.hypot(dx, dy);
-      const minDistance = PLAYER_RADIUS + entity.radius;
+      const minDistance = (PLAYER_RADIUS + entity.radius) * 0.8;
 
       if (distance < minDistance) {
         const overlap = minDistance - distance;

@@ -1,9 +1,9 @@
 import { MAP_HALF_SIZE, WorldEntity, EntityType } from "@mumoo/shared";
 
 const ENTITY_CONFIGS = {
-  [EntityType.Tree]: { minRadius: 50, maxRadius: 70 },
-  [EntityType.Rock]: { minRadius: 40, maxRadius: 50 },
-  [EntityType.Bush]: { minRadius: 35, maxRadius: 45 },
+  [EntityType.Tree]: { minRadius: 55, maxRadius: 65 },
+  [EntityType.Rock]: { minRadius: 50, maxRadius: 55 },
+  [EntityType.Bush]: { minRadius: 35, maxRadius: 40 },
 };
 
 export class WorldManager {
@@ -14,7 +14,7 @@ export class WorldManager {
 
     // Spawn entities across the map
     this.spawnEntities(EntityType.Tree, 150);
-    this.spawnEntities(EntityType.Rock, 75);
+    this.spawnEntities(EntityType.Rock, 50);
     this.spawnEntities(EntityType.Bush, 75);
   }
 
@@ -52,7 +52,7 @@ export class WorldManager {
       return false;
     }
 
-    const scale = 0.85 + Math.random() * 0.3; // Scale variant between 0.85 and 1.15
+    const scale = 0.95 + Math.random() * 0.1; // Scale variant between 0.95 and 1.05
     const baseRadius = (config.minRadius + config.maxRadius) / 2;
     const radius = baseRadius * scale;
 
@@ -60,7 +60,7 @@ export class WorldManager {
     let overlap = false;
     for (const entity of this.entities) {
       const distance = Math.hypot(x - entity.x, y - entity.y);
-      if (distance < radius + entity.radius + 30) { // Keep 30px buffer space
+      if (distance < radius + entity.radius + 15) { // Keep 30px buffer space
         overlap = true;
         break;
       }

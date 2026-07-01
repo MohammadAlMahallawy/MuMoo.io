@@ -302,7 +302,7 @@ Combat
 
 Tasks:
 
-* [ ] Weapons
+* [ ] Weapons (a simple sword, we will do the rest when we do the leveling Milestone)
 * [ ] Swing animation
 * [ ] Damage
 * [ ] Health
@@ -316,6 +316,25 @@ Combat works.
 ---
 
 # Milestone 8
+
+levelling
+
+Tasks:
+
+* [ ] make a functioning level bar at the top
+* [ ] implement "gold" gaining from windmills
+* [ ] suggest new weapons / food types that cost more than normal apples / building blocks when a new level is reached
+* [ ] make the new items appear in the user interface, at the bottom next to the other tools he has
+* [ ] make the order of the unlocked upgrades hardcoded, not random
+* [ ] stop leveling at level 20
+
+Definition of Done:
+
+a complete leveling system that unlocks new building blocks (windmills,wooden walls, stone walls, etc), new food (cheese that costs 20 apples, cake that costs 35), weapons (long sword with longer reach, a stick with more resources per hit an axe that is balanced between them)
+
+---
+
+# Milestone 9
 
 Networking
 
@@ -333,7 +352,7 @@ Multiple players can play together.
 
 ---
 
-# Milestone 9
+# Milestone 10
 
 Bots
 
@@ -351,7 +370,7 @@ Bots behave like players.
 
 ---
 
-# Milestone 10
+# Milestone 11
 
 UI
 
@@ -370,7 +389,7 @@ Core gameplay UI is complete.
 
 ---
 
-# Milestone 11
+# Milestone 12
 
 Polish
 
@@ -385,7 +404,7 @@ Tasks:
 
 ---
 
-# Milestone 12
+# Milestone 13
 
 Optimization
 
@@ -399,22 +418,6 @@ Tasks:
 
 ---
 
-# Future Ideas
-
-* Clans
-* Friends
-* Cosmetics
-* Replay system
-* Spectator mode
-* Ranked mode
-* Day/Night cycle
-* Weather
-* More biomes
-* More enemies
-* Better AI
-* Mobile support
-
----
 
 # AI Instructions
 

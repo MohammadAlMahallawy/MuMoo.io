@@ -18,7 +18,7 @@ export class InventoryView {
   constructor(private readonly player: Player) {
     // Semi-transparent dark background card for HUD styling
     this.background.roundRect(0, 0, 150, 80, 8)
-      .fill({ color: "#000000", alpha: 0.6 })
+      .fill({ color: "#000000", alpha: 0.1 })
       .stroke({ width: 2, color: "#444444" });
 
     this.text.position.set(15, 10);
