@@ -4,7 +4,6 @@
     "types": [
       "vite/client"
     ],
-    "baseUrl": ".",
     "paths": {
       "@mumoo/shared": [
         "../shared/src/index.ts"
