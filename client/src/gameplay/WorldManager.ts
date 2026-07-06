@@ -1,10 +1,14 @@
 import { MAP_HALF_SIZE, WorldEntity, EntityType } from "@mumoo/shared";
 
 const ENTITY_CONFIGS = {
-  [EntityType.Tree]: { minRadius: 55, maxRadius: 65 },
-  [EntityType.Rock]: { minRadius: 50, maxRadius: 55 },
-  [EntityType.Bush]: { minRadius: 35, maxRadius: 40 },
+  [EntityType.Tree]: { minRadius: 65, maxRadius: 85 },
+  [EntityType.Rock]: { minRadius: 50, maxRadius: 70 },
+  [EntityType.Bush]: { minRadius: 35, maxRadius: 45 },
+  [EntityType.gold]: { minRadius: 55, maxRadius: 65 },
 };
+
+const WORLD_DENSITY = 0.8; // Ratios multiplier for spawning density
+const SIZE_VARIATION = 0.05; // Customizable scale variation range (e.g. 0.15 means scales between 0.85 and 1.15)
 
 export class WorldManager {
   readonly entities: WorldEntity[] = [];
@@ -12,10 +16,11 @@ export class WorldManager {
   generateWorld(): void {
     this.entities.length = 0;
 
-    // Spawn entities across the map
-    this.spawnEntities(EntityType.Tree, 150);
-    this.spawnEntities(EntityType.Rock, 50);
-    this.spawnEntities(EntityType.Bush, 75);
+    // Spawn entities across the map using density ratios
+    this.spawnEntities(EntityType.Tree, Math.floor(120 * WORLD_DENSITY));
+    this.spawnEntities(EntityType.Rock, Math.floor(50 * WORLD_DENSITY));
+    this.spawnEntities(EntityType.Bush, Math.floor(60 * WORLD_DENSITY));
+    this.spawnEntities(EntityType.gold, Math.floor(30 * WORLD_DENSITY));
   }
 
   // Reduce the entity's health but never destroy it — resources are permanent.
@@ -31,7 +36,7 @@ export class WorldManager {
     let spawned = 0;
     let attempts = 0;
 
-    while (spawned < count && attempts < 2000) {
+    while (spawned < count && attempts < 4000) {
       attempts++;
       if (this.spawnSingleEntityInternal(type, spawned)) {
         spawned++;
@@ -52,7 +57,7 @@ export class WorldManager {
       return false;
     }
 
-    const scale = 0.95 + Math.random() * 0.1; // Scale variant between 0.95 and 1.05
+    const scale = (1 - SIZE_VARIATION) + Math.random() * (SIZE_VARIATION * 2);
     const baseRadius = (config.minRadius + config.maxRadius) / 2;
     const radius = baseRadius * scale;
 
@@ -74,6 +79,7 @@ export class WorldManager {
         y,
         radius,
         scale,
+        rotation: Math.random() * Math.PI * 2,
         health: 100,
         maxHealth: 100,
       });

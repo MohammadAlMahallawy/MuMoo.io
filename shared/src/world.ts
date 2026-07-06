@@ -2,6 +2,7 @@ export enum EntityType {
   Tree = "tree",
   Rock = "rock",
   Bush = "bush",
+  gold = "gold",
 }
 
 export interface WorldEntity {
@@ -11,6 +12,7 @@ export interface WorldEntity {
   y: number;
   radius: number;
   scale: number;
+  rotation?: number;
   health: number;
   maxHealth: number;
 }

@@ -46,6 +46,13 @@ export class WorldView {
       case EntityType.Bush:
         container.addChild(this.drawBush(entity.radius));
         break;
+      case EntityType.gold:
+        container.addChild(this.drawGold(entity.radius));
+        break;
+    }
+
+    if (entity.rotation !== undefined) {
+      container.rotation = entity.rotation;
     }
 
     return container;
@@ -53,33 +60,43 @@ export class WorldView {
 
   private drawTree(radius: number): Graphics {
     const g = new Graphics();
-    const outlineColor = "#1b3724";
+    const outlineColor = "#152d1c";
 
-    // 1. Draw Trunk (small offset circle below leaves)
+    // 1. Draw Root Flairs/Trunk shadow
+    g.circle(0, radius * 0.1, radius * 0.35)
+      .fill("#2a1708");
+
+    // 2. Draw Trunk (exactly 2 shades: base and inner highlight)
     g.circle(0, 0, radius * 0.3)
-      .fill("#8b5a2b")
-      .stroke({ width: 3, color: "#3b2411" });
+      .fill("#6d401b")
+      .stroke({ width: 3, color: "#301905" });
+    
+    g.circle(-radius * 0.05, -radius * 0.05, radius * 0.18)
+      .fill("#875328");
 
-    // 2. Draw Main Foliage Circle
+    // 3. Draw Main Foliage Circle (Base)
     g.circle(0, 0, radius)
-      .fill("#236f46")
-      .stroke({ width: 4, color: outlineColor });
+      .fill("#1b5c37")
+      .stroke({ width: 4.5, color: outlineColor });
 
-    // 3. Draw Foliage Highlight (inner slightly brighter circle, offset slightly to top-left)
-    g.circle(-radius * 0.12, -radius * 0.12, radius * 0.76)
-      .fill("#2f8055");
+    // 4. Draw Highlight (1 highlight shade, top-left offset circle)
+    g.circle(-radius * 0.12, -radius * 0.12, radius * 0.78)
+      .fill("#257c4c");
 
-    // 4. Add Apples/Fruits (red spheres with outline, typical of MooMoo.io trees)
+    // 5. Add Apples/Fruits (2 shades: base and highlight)
     const fruits = [
-      { x: -radius * 0.45, y: radius * 0.2 },
-      { x: radius * 0.35, y: -radius * 0.4 },
-      { x: radius * 0.15, y: radius * 0.5 },
+      { x: -radius * 0.45, y: radius * 0.2, r: 0.15 },
+      { x: radius * 0.35, y: -radius * 0.4, r: 0.14 },
+      { x: radius * 0.15, y: radius * 0.5, r: 0.16 },
+      { x: -radius * 0.1, y: -radius * 0.45, r: 0.13 },
     ];
 
     for (const fruit of fruits) {
-      g.circle(fruit.x, fruit.y, radius * 0.15)
-        .fill("#932b2b")
-        .stroke({ width: 2, color: "#431010" });
+      const fr = radius * fruit.r;
+      g.circle(fruit.x, fruit.y, fr)
+        .fill("#ad2b2b")
+        .stroke({ width: 2, color: "#4c0b0b" });
+      g.circle(fruit.x - fr * 0.25, fruit.y - fr * 0.25, fr * 0.55).fill("#e55c5c");
     }
 
     return g;
@@ -87,56 +104,105 @@ export class WorldView {
 
   private drawRock(radius: number): Graphics {
     const g = new Graphics();
-    const outlineColor = "#2d2d2d";
+    const outlineColor = "#262626";
 
-    // 1. Draw Main Rock Body
+    // 1. Draw Main Rock Body (Base shade)
     g.circle(0, 0, radius)
-      .fill("#686868")
-      .stroke({ width: 4, color: outlineColor });
+      .fill("#6b7077")
+      .stroke({ width: 4.5, color: outlineColor });
 
-    // 2. Draw Highlight
-    g.circle(-radius * 0.12, -radius * 0.12, radius * 0.76)
-      .fill("#808080");
-
-    // 3. Draw Inner Shadow/Detail
-    g.circle(radius * 0.2, radius * 0.2, radius * 0.4)
-      .fill("#545454");
+    // 2. Draw Highlight (1 highlight shade, top-left offset circle)
+    g.circle(-radius * 0.12, -radius * 0.12, radius * 0.78)
+      .fill("#808691");
 
     return g;
   }
 
   private drawBush(radius: number): Graphics {
     const g = new Graphics();
-    const outlineColor = "#1c3c13";
+    const outlineColor = "#162f11";
 
-    // 1. Draw Outer Foliage Circles to form a cloud/bush shape
-    const leafCount = 5;
+    // 1. Draw Outer Foliage Circles (Base shade)
+    const leafCount = 6;
+    const outerCircles: {x: number, y: number, r: number}[] = [];
     for (let i = 0; i < leafCount; i++) {
       const angle = (i * Math.PI * 2) / leafCount;
-      const offsetDistance = radius * 0.35;
+      const offsetDistance = radius * 0.45;
       const lx = Math.cos(angle) * offsetDistance;
       const ly = Math.sin(angle) * offsetDistance;
-      g.circle(lx, ly, radius * 0.7).fill("#3b7e28");
+      const r = radius * 0.65;
+      outerCircles.push({ x: lx, y: ly, r });
     }
 
-    // 2. Draw Central Foliage Circle
-    g.circle(0, 0, radius * 0.75).fill("#489b31");
+    // Draw main outer circles
+    for (const c of outerCircles) {
+      g.circle(c.x, c.y, c.r)
+        .fill("#357224")
+        .stroke({ width: 4.5, color: outlineColor });
+    }
 
-    // 3. Draw Main Outlying Stroke
-    g.circle(0, 0, radius).stroke({ width: 4, color: outlineColor });
+    // 2. Draw Central Foliage Circle (Highlight shade)
+    g.circle(-radius * 0.08, -radius * 0.08, radius * 0.75).fill("#4ea535");
 
-    // 4. Add Berries (small red circles with outline)
+    // Redraw outlying outer stroke
+    g.circle(0, 0, radius).stroke({ width: 4.5, color: outlineColor });
+
+    // 3. Add Berries (2 shades: base and highlight)
     const berries = [
-      { x: -radius * 0.43, y: -radius * 0.37 },
-      { x: radius * 0.37, y: radius * 0.37 },
-      { x: -radius * 0.3, y: radius * 0.3 },
-      { x: radius * 0.4, y: -radius * 0.4 },
+      { x: -radius * 0.45, y: -radius * 0.35, r: 0.12 },
+      { x: radius * 0.4, y: radius * 0.4, r: 0.14 },
+      { x: -radius * 0.35, y: radius * 0.35, r: 0.11 },
+      { x: radius * 0.45, y: -radius * 0.3, r: 0.13 },
+      { x: -radius * 0.05, y: radius * 0.5, r: 0.12 },
+      { x: radius * 0.1, y: -radius * 0.5, r: 0.14 },
     ];
 
     for (const berry of berries) {
-      g.circle(berry.x, berry.y, radius * 0.13)
-        .fill("#801c1c")
-        .stroke({ width: 2, color: "#541212" });
+      const br = radius * berry.r;
+      g.circle(berry.x, berry.y, br)
+        .fill("#991a1a")
+        .stroke({ width: 2, color: "#4f0707" });
+      g.circle(berry.x - br * 0.25, berry.y - br * 0.25, br * 0.55).fill("#e04343");
+    }
+
+    return g;
+  }
+
+  private drawGold(radius: number): Graphics {
+    const g = new Graphics();
+    const outlineColor = "#262626";
+
+    // 1. Draw Dark Grey Rock Base (Base shade)
+    g.circle(0, 0, radius)
+      .fill("#5c6066")
+      .stroke({ width: 4.5, color: outlineColor });
+    
+    // 2. Draw Rock Base Highlight (Highlight shade)
+    g.circle(-radius * 0.12, -radius * 0.12, radius * 0.78)
+      .fill("#737880");
+
+    // Redraw outlying base stroke
+    g.circle(0, 0, radius).stroke({ width: 4.5, color: outlineColor });
+
+    // 3. Draw distributed circular golden nuggets (like apples on a tree)
+    const nuggets = [
+      { x: -radius * 0.45, y: radius * 0.2, r: 0.16 },
+      { x: radius * 0.35, y: -radius * 0.4, r: 0.15 },
+      { x: radius * 0.15, y: radius * 0.5, r: 0.17 },
+      { x: -radius * 0.15, y: -radius * 0.45, r: 0.14 },
+      { x: 0, y: 0, r: 0.20 },
+    ];
+
+    for (const nug of nuggets) {
+      const nr = radius * nug.r;
+      // Nugget body (base gold shade)
+      g.circle(nug.x, nug.y, nr)
+        .fill("#d8a50c")
+        .stroke({ width: 3, color: "#3a2a02" });
+
+      // Nugget highlight (1 highlight shade)
+      g.circle(nug.x - nr * 0.25, nug.y - nr * 0.25, nr * 0.55)
+        .fill("#fcd856");
     }
 
     return g;

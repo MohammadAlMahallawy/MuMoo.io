@@ -2,6 +2,7 @@ export interface PlayerInventory {
   wood: number;
   stone: number;
   food: number;
+  gold: number;
 }
 
 export class Player {
@@ -16,6 +17,7 @@ export class Player {
     wood: 0,
     stone: 0,
     food: 0,
+    gold: 0,
   };
 }
 

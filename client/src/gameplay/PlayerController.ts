@@ -71,6 +71,8 @@ export class PlayerController {
             this.player.inventory.stone += 10;
           } else if (resourceType === EntityType.Bush) {
             this.player.inventory.food += 10;
+          } else if (resourceType === EntityType.gold) {
+            this.player.inventory.gold += 1;
           }
         }
       }
