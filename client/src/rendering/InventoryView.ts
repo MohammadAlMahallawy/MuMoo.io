@@ -5,7 +5,7 @@ export class InventoryView {
   readonly view = new Container();
   private readonly background = new Graphics();
   private readonly text = new Text({
-    text: "Wood: 0\nStone: 0\nFood: 0\ngold: 0",
+    text: "Wood: 0\nStone: 0\nFood: 0\nGold: 0",
     style: {
       fill: "#f7fff9",
       fontFamily: "Arial, Helvetica, sans-serif",
@@ -31,6 +31,6 @@ export class InventoryView {
 
   update(): void {
     const inv = this.player.inventory;
-    this.text.text = `Wood: ${inv.wood}\nStone: ${inv.stone}\nFood: ${inv.food}\ngold: ${inv.gold}`;
+    this.text.text = `Wood: ${inv.wood}\nStone: ${inv.stone}\nFood: ${inv.food}\nGold: ${inv.gold}`;
   }
 }

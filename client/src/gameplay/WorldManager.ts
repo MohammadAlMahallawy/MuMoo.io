@@ -4,7 +4,7 @@ const ENTITY_CONFIGS = {
   [EntityType.Tree]: { minRadius: 65, maxRadius: 85 },
   [EntityType.Rock]: { minRadius: 50, maxRadius: 70 },
   [EntityType.Bush]: { minRadius: 35, maxRadius: 45 },
-  [EntityType.gold]: { minRadius: 55, maxRadius: 65 },
+  [EntityType.Gold]: { minRadius: 55, maxRadius: 65 },
 };
 
 const WORLD_DENSITY = 0.8; // Ratios multiplier for spawning density
@@ -20,7 +20,7 @@ export class WorldManager {
     this.spawnEntities(EntityType.Tree, Math.floor(120 * WORLD_DENSITY));
     this.spawnEntities(EntityType.Rock, Math.floor(50 * WORLD_DENSITY));
     this.spawnEntities(EntityType.Bush, Math.floor(60 * WORLD_DENSITY));
-    this.spawnEntities(EntityType.gold, Math.floor(30 * WORLD_DENSITY));
+    this.spawnEntities(EntityType.Gold, Math.floor(30 * WORLD_DENSITY));
   }
 
   // Reduce the entity's health but never destroy it — resources are permanent.

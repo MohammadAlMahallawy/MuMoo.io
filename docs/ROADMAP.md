@@ -266,8 +266,6 @@ Resources
 Tasks:
 
 * [x] Hit detection
-* [x] Tree health
-* [x] Rock health
 * [x] Resource drops
 * [x] Inventory
 
@@ -283,16 +281,21 @@ Player gathers resources.
 Building
 
 Tasks:
+* [ ] Add wooden walls, buildable by the player, costs maybe 20 trees, use the shortcut '2' to use it at the game
+* [ ] Add an apple, edible by the player, costs 5 bushes, use the shortcut 'q' to use it in the game
+* [ ] a ui at the bottom of the screen in the middle showing everything the player can use from tools to building blocks and so on.
+* [ ] leveling bar at the top, make new items appear in the UI when a new level is reached
+* [ ] Add Windmills to that list and make it cost a sum of wood and stones from the player to place, use the shortcut '4', it should cost (30 trees, 40 rocks)
+* [ ] Add Spikes as well and make it slightly cheaper, use the shortcut '3'
+* [ ] Placement preview if the player chose an item from the ui and wants to build it an he has the required materials
+* [ ] Collision between buildable things
 
-* [ ] Walls
-* [ ] Windmills
-* [ ] Spikes
-* [ ] Placement preview
-* [ ] Collision
+Example :
+a player starts with nothing, he can see an empty level bar at the top, he has a UI at the bottom showing a wooden wall, and his two fists, the two items are at the bottom center, he can't place the wooden walls until he collects enough resources (20 trees for example), and while he is collecting resources he sees his level bar increase, when he reaches a new level (from 0 to 5), he gets to choose a new item, give him the option to choose the item (give him only one item for now per level to choose from, we will add more later), it should be displayed under the level bar and when clicked gets moved to the bottom ui, in the level 1 he could get the apple, level 2 is the wooden walls, level 3 is the spikes, level 4 is the windmill, he should start from an empty level 0, after that the level bar should continue to increase but without showing new items to choose.
 
 Definition of Done:
 
-Player can build structures.
+Player can build structures, haveing a working level bar that increases with resources, a ui to show what the user can build
 
 ---
 

@@ -46,7 +46,7 @@ export class WorldView {
       case EntityType.Bush:
         container.addChild(this.drawBush(entity.radius));
         break;
-      case EntityType.gold:
+      case EntityType.Gold:
         container.addChild(this.drawGold(entity.radius));
         break;
     }

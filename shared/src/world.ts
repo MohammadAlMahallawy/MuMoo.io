@@ -2,7 +2,7 @@ export enum EntityType {
   Tree = "tree",
   Rock = "rock",
   Bush = "bush",
-  gold = "gold",
+  Gold = "gold",
 }
 
 export interface WorldEntity {
